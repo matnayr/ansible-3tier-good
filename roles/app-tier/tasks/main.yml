@@ -1,0 +1,29 @@
+---
+# tasks file for roles/lb-tier
+#
+- name: Install Tomcat
+  yum:
+    name: ['{{ item }}']
+    state: latest
+  with_items:
+    - "{{ tomcat_pkg }}"
+
+- name: Enable Tomcat
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - "{{ tomcat_srv }}"
+
+- name: Create ansible tomcat directory
+  file:
+    path: /usr/share/tomcat/webapps/ansible
+    state: directory
+  
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: ./templates/index.html.j2
+    dest: /usr/share/tomcat/webapps/ansible/index.html
+    mode: 0644
+
+
