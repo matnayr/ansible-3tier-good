@@ -1,7 +1,0 @@
----
-- name: Testing
-  hosts: frontends
-  tasks:
-  - name: Print all variables for each remote device
-    debug:
-      var: hostvars[inventory_hostname] 
