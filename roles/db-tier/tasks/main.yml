@@ -12,8 +12,9 @@
     path: "{{ postgresql_data_dir }}/PG_VERSION"
   register: pgdata_dir_version
 
-- name: Initialize Postgresql
+- name: Initialize Postgresql if database dose not existed
   command: postgresql-setup initdb
+  when: pgdata_dir_version.stat.exists == False
 
 - name: Enable Postgres at boot
   service:
