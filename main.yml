@@ -6,26 +6,26 @@
   gather_facts: false
   become: true
   roles:
-   - common 
+   - roles/common 
 
 - name: Configure Frontends
   hosts: frontends
   gather_facts: false
   become: true
   roles:
-   - lb-tier
+   - roles/lb-tier
 
 - name: Configure Apps
   hosts: apps
   gather_facts: false
   become: true
   roles:
-   - app-tier
+   - roles/app-tier
 
 - name: Configure DB
   hosts: appdbs
   gather_facts: false
   become: true
   roles:
-   - db-tier 
-...
+   - roles/db-tier 
+
