@@ -1,0 +1,10 @@
+[frontends]
+frontend1.28f3.internal ansible_ssh_host=frontend1.28f3.example.opentlc.com
+
+[apps]
+app1.28f3.internal ansible_ssh_host=app1.28f3.example.opentlc.com
+app2.28f3.internal ansible_ssh_host=app2.28f3.example.opentlc.com
+
+[appdbs]
+appdb1.28f3.internal ansible_ssh_host=appdb1.28f3.example.opentlc.com
+
