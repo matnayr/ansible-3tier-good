@@ -1,5 +1,5 @@
 ---
-- name: Testing
+- name: Gathering Facts
   hosts: frontends
   tasks:
   - name: Print all variables for each remote device
