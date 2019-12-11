@@ -8,22 +8,22 @@
   with_items:
     - "{{ tomcat_pkg }}"
 
-- name: Enable Tomcat
+- name: Create ansible tomcat directory
+  file:
+    path: /usr/share/tomcat/webapps/ROOT
+    state: directory
+  
+- name: copy static index.html to tomcat ROOT
+  template:
+    src: ./templates/index.html.j2
+    dest: /usr/share/tomcat/webapps/ROOT/index.html
+    mode: 0644
+
+- name: Enable and satrt Tomcat
   service:
     name: "{{ item }}"
     state: started
+    enabled: yes
   with_items:
     - "{{ tomcat_srv }}"
-
-- name: Create ansible tomcat directory
-  file:
-    path: /usr/share/tomcat/webapps/ansible
-    state: directory
-  
-- name: copy static index.html to tomcat webapps/ansible/index.html
-  template:
-    src: ./templates/index.html.j2
-    dest: /usr/share/tomcat/webapps/ansible/index.html
-    mode: 0644
-
 
